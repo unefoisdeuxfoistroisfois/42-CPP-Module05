@@ -18,6 +18,14 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs){
 	return (*this);
 }
 
+Bureaucrat::GradeTooHighException(){
+
+}
+
+Bureaucrat::GradeTooLowException(){
+
+}
+
 Bureaucrat::~Bureaucrat(){
 	std::cout << "Bureaucrat destructor called" << std::endl;
 }

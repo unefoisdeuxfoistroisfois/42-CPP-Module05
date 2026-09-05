@@ -13,6 +13,10 @@ class Bureaucrat {
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &src);
 		Bureaucrat &operator=(const Bureaucrat &rhs);
+
+		GradeTooHighException();
+		GradeTooLowException();
+
 		~Bureaucrat();
 };
 
