@@ -5,6 +5,8 @@
 #include <iostream>
 #include <exception>
 
+class Form;
+
 class Bureaucrat {
 	private : 
 		const std::string _name;
@@ -19,12 +21,15 @@ class Bureaucrat {
 		Bureaucrat &operator=(const Bureaucrat &rhs);
 
 		Bureaucrat(const std::string &name, int grade);
+
+		//fonction
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(Form &form);
 
 		//get
-		const std::string getName(void)const;
-		size_t getGrade(void)const;
+		const std::string getName()const;
+		size_t getGrade()const;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception{
