@@ -21,6 +21,7 @@ class Form{
 		Form();
 		Form(const Form &src);
 		Form &operator=(const Form &rhs);
+
 		Form(const std::string &name, int signGrade, int execGrade);
 
 		//fontions
