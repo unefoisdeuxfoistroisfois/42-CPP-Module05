@@ -20,14 +20,26 @@ Form &Form::operator=(const Form &rhs){
 	return (*this);
 }
 
-/**
- * A corriger
- */
-std::ostream &operator<<(std::ostream &cout, const Form &form, const Bureaucrat &bureaucrat)
-{
-    cout << bureaucrat.getName() << ", form grade " << form.getGrade() << ".";
+std::ostream &operator<<(std::ostream &cout, const Form &form){
+	cout << form.getName() << ", form signed: ";
+	if (form.getIsSigned())
+		cout << "yes";
+	else
+		cout << "no";
+	cout << ", sign grade: " << form.getSignGrade()
+			 << ", exec grade: " << form.getExecGrade();
 
-    return (cout);
+	return (cout);
+}
+
+const char *Form::GradeTooHighException::what() const throw(){
+
+	return ("Grade : grade is too high");
+}
+
+const char *Form::GradeTooLowException::what() const throw(){
+
+	return ("Grade : grade is too low");
 }
 
 /**
