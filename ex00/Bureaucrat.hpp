@@ -23,8 +23,8 @@ class Bureaucrat {
 		void decrementGrade();
 
 		//get
-		const std::string getName(void)const;
-		size_t getGrade(void)const;
+		const std::string getName()const;
+		size_t getGrade()const;
 
 		// Exceptions
 		class GradeTooHighException : public std::exception{
