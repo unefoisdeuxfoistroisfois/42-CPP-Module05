@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(MAX_GRADE) { // les const toujours en liste
 	std::cout << "Bureaucrat default constructor called" << std::endl;
@@ -33,6 +34,16 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name){
 	}
 }
 
+void Bureaucrat::signForm(Form &form){
+	try{
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	} catch (std::exception &e){ //s'exécute si un throw a eu lieu dans le try
+		std::cout << this->_name << " couldn't sign " << form.getName()
+		<< " because " << e.what() << std::endl;
+	}
+}
+
 std::ostream &operator<<(std::ostream &cout, const Bureaucrat &bureaucrat){
     cout << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 
@@ -50,9 +61,9 @@ const char *Bureaucrat::GradeTooLowException::what() const throw(){
 	return ("Bureaucrat : grade is too low");
 }
 
-void	Bureaucrat::incrementGrade(){
+void Bureaucrat::incrementGrade(){
 
-	if (_grade - 1 < MIN_GRADE){
+	if (this->_grade - 1 < MIN_GRADE){
 		throw (GradeTooHighException());
 	} else{
 		this->_grade = this->_grade - 1;
