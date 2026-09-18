@@ -1,7 +1,7 @@
 .PHONY : all clean fclean re
 .SILENT :
 
-NAME			= ex00
+NAME			= ex01
 CXX     	= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 SRC     	= main.cpp Bureaucrat.cpp Form.cpp
