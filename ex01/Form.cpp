@@ -1,9 +1,10 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : _name("Default"), _signGrade(MAX_GRADE), _execGrade(MAX_GRADE) {
 	std::cout << "Form default constructor called" << std::endl;
 
-	bool _isSigned = false;
+	this->_isSigned = false;
 }
 
 Form::Form(const Form &src) : _name(src._name), _signGrade(src._signGrade), _execGrade(src._execGrade) {
@@ -20,16 +21,42 @@ Form &Form::operator=(const Form &rhs){
 	return (*this);
 }
 
+void Form::beSigned(Bureaucrat &signer){
+	if (((int)signer.getGrade()) > this->_signGrade){
+		throw(Form::GradeTooLowException());
+	} else {
+		this->_isSigned = true;
+	}
+}
+
 std::ostream &operator<<(std::ostream &cout, const Form &form){
 	cout << form.getName() << ", form signed: ";
-	if (form.getIsSigned())
+	if (form.getIsSigned() == true){
 		cout << "yes";
-	else
+	} else {
 		cout << "no";
+	}
 	cout << ", sign grade: " << form.getSignGrade()
 			 << ", exec grade: " << form.getExecGrade();
 
 	return (cout);
+}
+
+/**
+ * A continuer apres
+ */
+//Form f("Contrat", 50, 30);   // Il faut imaginer les donnees entré par l'user
+Form::Form(const std::string &name, int signGrade, int execGrade) : _name(name), _signGrade(signGrade), _execGrade(execGrade){
+  std::cout << "Form parametric constructor called" << std::endl;
+
+	this->_isSigned = false;
+
+	if (signGrade < MIN_GRADE || execGrade < MIN_GRADE){
+		throw (GradeTooHighException());// car il quitte directemetn et il envoie direct a un catch
+    //GradeTooHighException();
+	} else if (signGrade > MAX_GRADE || execGrade > MAX_GRADE){
+		throw (GradeTooLowException());
+	} 
 }
 
 const char *Form::GradeTooHighException::what() const throw(){
@@ -40,14 +67,6 @@ const char *Form::GradeTooHighException::what() const throw(){
 const char *Form::GradeTooLowException::what() const throw(){
 
 	return ("Grade : grade is too low");
-}
-
-/**
- * A continuer apres
- */
-Form::Form(const std::string &name, int signGrade, int execGrade){
-  std::cout << "Form parametric constructor called" << std::endl;
-
 }
 
 std::string Form::getName() const{
