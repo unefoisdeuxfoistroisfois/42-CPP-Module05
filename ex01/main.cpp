@@ -1,95 +1,80 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-void testValidGrades(){
-	std::cout << "\n=== VALID GRADES TEST ===" << std::endl;
-
-	Bureaucrat highest("Alice", 1);
-	Bureaucrat middle("Bob", 75);
-	Bureaucrat lowest("Charlie", 150);
-
-	std::cout << highest << std::endl;
-	std::cout << middle << std::endl;
-	std::cout << lowest << std::endl;
-}
-
-void testInvalidGrades(){
-	std::cout << "\n=== INVALID GRADES TEST ===" << std::endl;
-
-	try{
-		Bureaucrat tooHigh("Dave", 0);
-		std::cout << tooHigh << std::endl;
-	}catch (const std::exception &e){
-		std::cerr << e.what() << std::endl;
-	}
-
-	try{
-		Bureaucrat tooLow("Eve", 151);
-		std::cout << tooLow << std::endl;
-	}catch (const std::exception &e){
-		std::cerr << e.what() << std::endl;
-	}
-}
-
-void testIncrement()
+void testSignSuccess()
 {
-	std::cout << "\n=== INCREMENT TEST ===" << std::endl;
+	std::cout << "\n=== SIGN SUCCESS TEST ===" << std::endl;
 
-	Bureaucrat bureaucrat("Frank", 2);
+	Form form1("Contract", 50, 50);
+	Bureaucrat boss("Bradley", 10);
 
-	std::cout << "Before increment: " << bureaucrat << std::endl;
-	bureaucrat.incrementGrade();
-	std::cout << "After increment:  " << bureaucrat << std::endl;
+	boss.signForm(form1);
+}
+
+void testSignFailure()
+{
+	std::cout << "\n=== SIGN FAILURE TEST ===" << std::endl;
+
+	Form form1("Contract", 50, 50);
+	Bureaucrat stagiaire("Divina", 100);
+
+	stagiaire.signForm(form1);
+}
+
+void testSignExactGrade()
+{
+	std::cout << "\n=== SIGN EXACT GRADE TEST ===" << std::endl;
+
+	Form form1("Contract", 50, 50);
+	Bureaucrat exact("Exact", 50);
+
+	exact.signForm(form1);
+}
+
+void testSignAlreadySigned()
+{
+	std::cout << "\n=== SIGN ALREADY SIGNED FORM TEST ===" << std::endl;
+
+	Form form1("Contract", 50, 50);
+	Bureaucrat boss("Bradley", 10);
+
+	boss.signForm(form1);
+	boss.signForm(form1);
+}
+
+void testInvalidFormCreation()
+{
+	std::cout << "\n=== INVALID FORM CREATION TEST ===" << std::endl;
 
 	try{
-		bureaucrat.incrementGrade();
+		Form badForm1("Bad1", 0, 50);
+	}catch (const std::exception &e){
+		std::cerr << e.what() << std::endl;
+	}
+
+	try{
+		Form badForm2("Bad2", 50, 151);
 	}catch (const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 }
 
-void testDecrement()
+void testFormDisplay()
 {
-	std::cout << "\n=== DECREMENT TEST ===" << std::endl;
+	std::cout << "\n=== FORM DISPLAY TEST ===" << std::endl;
 
-	Bureaucrat bureaucrat("Grace", 149);
-
-	std::cout << "Before decrement: " << bureaucrat << std::endl;
-	bureaucrat.decrementGrade();
-	std::cout << "After decrement:  " << bureaucrat << std::endl;
-
-	try{
-		bureaucrat.decrementGrade();
-	}catch (const std::exception &e){
-		std::cerr << e.what() << std::endl;
-	}
-}
-
-void testCopy()
-{
-	std::cout << "\n=== COPY TEST ===" << std::endl;
-
-	Bureaucrat original("Helen", 42);
-
-	std::cout << "\n--- Copy constructor ---" << std::endl;
-	Bureaucrat copy(original);
-	std::cout << "Original: " << original << std::endl;
-	std::cout << "Copy:     " << copy << std::endl;
-
-	std::cout << "\n--- Assignment operator ---" << std::endl;
-	Bureaucrat assigned("Ivan", 100);
-	assigned = original;
-	std::cout << "Original: " << original << std::endl;
-	std::cout << "Assigned: " << assigned << std::endl;
-	// Le grade est copie, mais le nom reste Ivan car _name est const.
+	Form form1("Contract", 50, 50);
+	std::cout << form1 << std::endl;
 }
 
 int main()
 {
-	testValidGrades();
-	testInvalidGrades();
-	testIncrement();
-	testDecrement();
-	testCopy();
+	testSignSuccess();
+	testSignFailure();
+	testSignExactGrade();
+	testSignAlreadySigned();
+	testInvalidFormCreation();
+	testFormDisplay();
 
 	return (0);
 }
