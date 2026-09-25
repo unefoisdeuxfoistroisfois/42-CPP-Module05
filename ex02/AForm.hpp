@@ -26,6 +26,7 @@ class AForm{
 
 		//fontions
 		void beSigned(Bureaucrat &signer);
+		virtual void execute(const Bureaucrat &excutor) const = 0; // classe abstraite
 
 		//get
 		std::string getName() const;
