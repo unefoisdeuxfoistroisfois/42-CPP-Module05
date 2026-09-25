@@ -8,7 +8,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) :
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs){
-	std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
+	std::cout << "ShrubberyCreationForm assignement constructor called" << std::endl;
 	if (this != &rhs){
 		AForm::operator=(rhs);
 	}
