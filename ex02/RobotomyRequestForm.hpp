@@ -1,12 +1,13 @@
-#ifndef  ROBOTOMYREQUESTFORM_HPP
-#define  ROBOTOMYREQUESTFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
+#include "AForm.hpp"
 #include <iostream>
 
-class RobotomyRequestForm{
-	public :
-
+class RobotomyRequestForm : public AForm{
 	private :
+
+	public :
 		RobotomyRequestForm();
 		RobotomyRequestForm(const RobotomyRequestForm &src);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
@@ -14,6 +15,7 @@ class RobotomyRequestForm{
 		RobotomyRequestForm(const std::string &target);
 		~RobotomyRequestForm();
 
+		void execute(const Bureaucrat &excutor) const;
 };
 
 #endif
