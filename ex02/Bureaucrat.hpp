@@ -5,7 +5,7 @@
 #include <iostream>
 #include <exception>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	private : 
@@ -25,7 +25,7 @@ class Bureaucrat {
 		//fonction
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form &form);
+		void signForm(AForm &form);
 
 		//get
 		const std::string getName()const;

@@ -26,7 +26,7 @@ class AForm{
 
 		//fontions
 		void beSigned(Bureaucrat &signer);
-		virtual void execute(const Bureaucrat &excutor) const = 0; // classe abstraite
+		virtual void execute(const Bureaucrat &executor) const = 0; // classe abstraite
 
 		//get
 		std::string getName() const;
@@ -45,6 +45,11 @@ class AForm{
 			public:
 				virtual const char *what() const throw();
 				//const char * what() const exemple du livre.
+		};
+
+		class NotSignedException : public std::exception{
+			public:
+				virtual const char *what() const throw();
 		};
 
 		~AForm();

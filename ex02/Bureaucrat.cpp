@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(MAX_GRADE) { // les const toujours en liste
 	std::cout << "Bureaucrat default constructor called" << std::endl;
@@ -34,7 +34,7 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name){
 	}
 }
 
-void Bureaucrat::signForm(Form &form){
+void Bureaucrat::signForm(AForm &form){
 	try{
 		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;

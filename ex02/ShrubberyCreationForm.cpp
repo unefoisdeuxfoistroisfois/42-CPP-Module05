@@ -20,6 +20,52 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(
 
 }
 
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
+	if (this->getIsSigned() == false)// on appel la get car c'est un private meme si il en herite et aussi this car on herite
+		throw AForm::NotSignedException();
+	if ((int)executor.getGrade() > this->getExecGrade())
+		throw AForm::GradeTooLowException();
+	else {
+
+		std::ofstream file;
+		file.open(this->getName().c_str());
+
+		if (file.is_open() == false){
+			std::cout << "Error: cannot open file" << std::endl;
+		} else {
+				file << "                                                          .\n"
+				     << "                                              .         ;  \n"
+				     << "                 .              .              ;%     ;;   \n"
+				     << "                   ,           ,                :;%  %;   \n"
+				     << "                    :         ;                   :;%;'     .,   \n"
+				     << "           ,.        %;     %;            ;        %;'    ,;\n"
+				     << "             ;       ;%;  %%;        ,     %;    ;%;    ,%'\n"
+				     << "              %;       %;%;      ,  ;       %;  ;%;   ,%;' \n"
+				     << "               ;%;      %;        ;%;        % ;%;  ,%;'\n"
+				     << "                `%;.     ;%;     %;'         `;%%;.%;'\n"
+				     << "                 `:;%.    ;%%. %@;        %; ;@%;%'\n"
+				     << "                    `:%;.  :;bd%;          %;@%;'\n"
+				     << "                      `@%:.  :;%.         ;@@%;'   \n"
+				     << "                        `@%.  `;@%.      ;@@%;         \n"
+				     << "                          `@%%. `@%%    ;@@%;        \n"
+				     << "                            ;@%. :@%%  %@@%;       \n"
+				     << "                              %@bd%%%bd%%:;     \n"
+				     << "                                #@%%%%%:;;\n"
+				     << "                                %@@%%%::;\n"
+				     << "                                %@@@%(o);  . '         \n"
+				     << "                                %@@@o%;:(.,'         \n"
+				     << "                            `.. %@@@o%::;         \n"
+				     << "                               `)@@@o%::;         \n"
+				     << "                                %@@(o)::;        \n"
+				     << "                               .%@@@@%::;         \n"
+				     << "                               ;%@@@@%::;.          \n"
+				     << "                              ;%@@@@%%:;;;. \n"
+				     << "                          ...;%@@@@@%%:;;;;,..    Gilo97\n";
+				file.close();
+		}
+	}
+}
+
 ShrubberyCreationForm::~ShrubberyCreationForm(){
 	std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
