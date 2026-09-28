@@ -23,3 +23,19 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm(targ
 RobotomyRequestForm::~RobotomyRequestForm(){
 	std::cout << "RobotomyRequestForm destructor called" << std::endl;
 }
+
+void RobotomyRequestForm::execute(const Bureaucrat &executor) const{
+	if (this->getIsSigned() == false)// on appel la get car c'est un private meme si il en herite et aussi this car on herite
+		throw (AForm::NotSignedException());
+	if ((int)executor.getGrade() > this->getExecGrade())
+		throw (AForm::GradeTooLowException());
+	else {
+		std::cout << "*** VRRRRRRRR ***" << std::endl;
+		if (std::rand() % 2 == 1){
+			std::cout << this->getName() << " has been robotomized successfully" << std::endl;;
+		} else {
+			std::cout << " Robotomized failed " << std::endl;
+		}
+	}
+}
+

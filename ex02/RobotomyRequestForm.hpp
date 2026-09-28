@@ -2,7 +2,10 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 #include <iostream>
+#include <cstdlib> // rand et srand
+#include <ctime>
 
 class RobotomyRequestForm : public AForm{
 	private :
