@@ -1,0 +1,22 @@
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
+
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include <iostream>
+
+class PresidentialPardonForm : public AForm{
+	private :
+
+	public :
+		PresidentialPardonForm();
+		PresidentialPardonForm(const PresidentialPardonForm &src);
+		PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);
+
+		PresidentialPardonForm(const std::string &target);
+		~PresidentialPardonForm();
+
+		void execute(const Bureaucrat &executor) const;
+};
+
+#endif
