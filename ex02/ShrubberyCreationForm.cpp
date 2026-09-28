@@ -22,9 +22,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const{
 	if (this->getIsSigned() == false)// on appel la get car c'est un private meme si il en herite et aussi this car on herite
-		throw AForm::NotSignedException();
+		throw (AForm::NotSignedException());
 	if ((int)executor.getGrade() > this->getExecGrade())
-		throw AForm::GradeTooLowException();
+		throw (AForm::GradeTooLowException());
 	else {
 
 		std::ofstream file;
