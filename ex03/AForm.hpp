@@ -52,7 +52,7 @@ class AForm{
 				virtual const char *what() const throw();
 		};
 
-		~AForm();
+		virtual ~AForm();
 };
 
 std::ostream &operator<<(std::ostream &cout, const AForm &form);
