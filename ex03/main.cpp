@@ -2,8 +2,34 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <cstdlib>
 #include <ctime>
+
+void ft_Intern(){
+//	Intern someRandomIntern;
+//	AForm* rrf;
+//
+//	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	Bureaucrat boss("Bradley", 10);
+	Intern stagiaire;
+
+	AForm *form1 = stagiaire.makeForm("robotomy request", "Bender");
+
+	if (form1){
+		boss.signForm(*form1);
+		boss.executeForm(*form1);
+		delete (form1);
+	}
+
+	AForm *form2 = stagiaire.makeForm("random form", "Clown");
+	if (form2 == NULL){
+		std::cout << "form2 est bien NULL" << std::endl;
+	} else {
+		delete (form2);
+	}
+	// doit retouner NULL
+}
 
 void ft_Bureaucrat(){
 	Bureaucrat boss("Bradley", 10);
@@ -53,17 +79,19 @@ int main()
 {
   std::srand(std::time(NULL));
 
-	std::cout << "--- ShrubberyCreationForm ---" << std::endl;
-	ft_ShrubberyCreationForm();
+//	std::cout << "--- ShrubberyCreationForm ---" << std::endl;
+//	ft_ShrubberyCreationForm();
+//
+//	std::cout << std::endl << "--- RobotomyRequestForm ---" << std::endl;
+//	ft_RobotomyRequestForm();
+//
+//	std::cout << std::endl << "--- PresidentialPardonForm ---" << std::endl;
+//	ft_PresidentialPardonForm();
+//
+//	std::cout << std::endl << "--- Bureaucrat ---" << std::endl;
+//	ft_Bureaucrat();
 
-	std::cout << std::endl << "--- RobotomyRequestForm ---" << std::endl;
-	ft_RobotomyRequestForm();
-
-	std::cout << std::endl << "--- PresidentialPardonForm ---" << std::endl;
-	ft_PresidentialPardonForm();
-
-	std::cout << std::endl << "--- Bureaucrat ---" << std::endl;
-	ft_Bureaucrat();
+	ft_Intern();
 
 	return (0);
 }
