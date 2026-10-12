@@ -30,8 +30,7 @@ void testInvalidGrades(){
 	}
 }
 
-void testIncrement()
-{
+void testIncrement(){
 	std::cout << "\n=== INCREMENT TEST ===" << std::endl;
 
 	Bureaucrat bureaucrat("Frank", 2);
@@ -47,8 +46,7 @@ void testIncrement()
 	}
 }
 
-void testDecrement()
-{
+void testDecrement(){
 	std::cout << "\n=== DECREMENT TEST ===" << std::endl;
 
 	Bureaucrat bureaucrat("Grace", 149);
@@ -64,8 +62,7 @@ void testDecrement()
 	}
 }
 
-void testCopy()
-{
+void testCopy(){
 	std::cout << "\n=== COPY TEST ===" << std::endl;
 
 	Bureaucrat original("Helen", 42);
@@ -83,8 +80,7 @@ void testCopy()
 	// Le grade est copie, mais le nom reste Ivan car _name est const.
 }
 
-int main()
-{
+int main(){
 	testValidGrades();
 	testInvalidGrades();
 	testIncrement();
