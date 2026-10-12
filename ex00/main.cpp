@@ -18,14 +18,14 @@ void testInvalidGrades(){
 	try{
 		Bureaucrat tooHigh("Dave", 0);
 		std::cout << tooHigh << std::endl;
-	}catch (const std::exception &e){
+	} catch (const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 
 	try{
 		Bureaucrat tooLow("Eve", 151);
 		std::cout << tooLow << std::endl;
-	}catch (const std::exception &e){
+	} catch (const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 }
@@ -42,7 +42,7 @@ void testIncrement()
 
 	try{
 		bureaucrat.incrementGrade();
-	}catch (const std::exception &e){
+	} catch (const std::exception &e){
 		std::cerr << e.what() << std::endl;
 	}
 }
